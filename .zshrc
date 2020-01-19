@@ -112,18 +112,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls="colorls"
-alias grm="go run main.go"
-alias python="python3"
-
 export GOPATH=/Users/ivan/go
 export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
 export RG=$GOPATH/src/gitlab.com/ruangguru/source
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
 export PATH=$GOBIN:$GOROOT/bin:$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
-# export PUBSUB_EMULATOR_HOST=localhost:8085
-# export PUBSUB_PROJECT_ID=silicon-airlock-153323
+export PUBSUB_EMULATOR_HOST=localhost:8085
+export PUBSUB_PROJECT_ID=silicon-airlock-153323
+
+alias ls="colorls"
+alias grm="go run main.go"
+alias python="python3"
+alias rg=$RG
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/path.zsh.inc'; fi
