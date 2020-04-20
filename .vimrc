@@ -8,11 +8,13 @@ call plug#begin('~/.vim/plugged')
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+" let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+
 "------------------------ VIM TSX ------------------------
 " by default, if you open tsx file, neovim does not show syntax colors
 " vim-tsx will do all the coloring for jsx in the .tsx file
 Plug 'ianks/vim-tsx'
+
 "------------------------ VIM TSX ------------------------
 " by default, if you open tsx file, neovim does not show syntax colors
 " typescript-vim will do all the coloring for typescript keywords
@@ -20,45 +22,69 @@ Plug 'leafgarland/typescript-vim'
 
 " directory
 Plug 'preservim/nerdtree'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'scrooloose/nerdcommenter'
+
 " view & search
 " Plug 'liuchengxu/vista.vim'
 Plug 'majutsushi/tagbar'
+
 " buffer tabs
 " Plug 'https://github.com/ap/vim-buftabline'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " dev icon
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
+
 " git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'zivyangll/git-blame.vim'
 
+" vim multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
 " Code completion
 " Plug 'https://github.com/ycm-core/YouCompleteMe'
+
 " Indent
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
+
 " motion
 " Plug 'yuttie/comfortable-motion.vim'
+
+" rest console
+Plug 'diepm/vim-rest-console'
+
+" notes
+Plug 'https://github.com/xolox/vim-notes'
+Plug 'https://github.com/xolox/vim-misc'
 
 " ------------ LANGUAGE SUPPORT ---------------
 " Rust
 Plug 'rust-lang/rust.vim'
 " Go
 Plug 'fatih/vim-go', { 'tag': '*' }
+" Python
+" Plug 'https://github.com/neoclide/coc-python'
 
 " ----------- theme ------------
 Plug 'https://github.com/dracula/vim'
 Plug 'https://github.com/rakr/vim-one'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 set encoding=UTF-8
-
+set t_Co=256
 set termguicolors
-set nowrap
 set backspace=indent,eol,start
 set ruler
 set number
@@ -67,6 +93,37 @@ set incsearch
 set hlsearch
 set mouse=a
 
+set wrap
+set linebreak
+set showbreak=....
+
+filetype plugin indent on
+set autoindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set backspace=2
+set cindent
+set smarttab
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+"set timeoutlen=1000
+"set ttimeoutlen=0
+
+"set synmaxcol=128
+"syntax sync minlines=256
+"set lazyredraw
+"set cursorline!
+"set splitright
+
+set wildmenu
+set wildmode=list:longest,full
+
+filetype plugin on
 " -------- motion setting ----------
 " let g:comfortable_motion_friction = 200.0
 " let g:comfortable_motion_air_drag = 0.0
@@ -76,15 +133,9 @@ set mouse=a
 " let g:edge_style = 'neon'
 " let g:edge_disable_italic_comment = 1
 
-syntax enable
+syntax on
 set background=dark
-colorscheme onehalfdark
-
-" --------- Custom binding -----------
-map <space>q :noh <CR>
-map qq :q <CR>
-map fs :w <CR>
-nnoremap <space>w <C-w>
+colorscheme palenight 
 
 " nnoremap <silent> gl :YcmCompleter GoToDeclaration<CR>
 " nnoremap <silent> gd :YcmCompleter GoToDefinition<CR>
@@ -94,15 +145,17 @@ nnoremap <space>w <C-w>
 nnoremap <silent> gbm :<C-u>call gitblame#echo()<CR>
 
 " --------- ycm setting ----------
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
-let g:ycm_auto_trigger = 1 
+" let g:ycm_add_preview_to_completeopt = 0
+" set completeopt-=preview
+" let g:ycm_auto_trigger = 1 
 
 " ---------- airline setting ------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onehalfdark'
+let g:airline_theme='palenight'
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_highlighting_cache = 1
+let g:airline#extensions#whitespace#enabled = 0
 
 " ------------ nerdtree setting -------------
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -110,10 +163,10 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 map <space>t :NERDTreeToggle <CR>
 " automatically close when windows is nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
+let g:NERDTreeIgnore = ['^node_modules$','^vendor$']
 " ---------- indent setting -----------
-let g:indentLine_char = '│'
-let g:indentLine_color_term = 255
+"let g:indentLine_char = '│'
+"let g:indentLine_color_term = 255
 
 " --------- Rust setting ----------
 let g:rustfmt_autosave = 1
@@ -124,8 +177,9 @@ let g:go_fmt_command = "goimports"
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
-let g:go_def_mapping_enabled = 0
+let g:go_def_mapping_enabled = 1 
 
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
@@ -133,6 +187,12 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_function_parameters = 1
+let g:go_doc_keywordprg_enabled = 0
+
+" --------- Python setting -------------
+let python_highlight_all=1
+let g:pymode_rope = 0
+"set completeopt-=preview
 
 " ------------- Buffer key binding ---------------
 nnoremap <silent> <space>bn :bnext<CR>
@@ -149,6 +209,14 @@ nnoremap <silent> <space>bg :call GotoNBuffer(getchar())<CR>
 	endif
 :endfunction
 
+" ------------- Note -------------
+nnoremap <silent> <space>N :call ViewNote()<CR>
+:function! ViewNote() 
+  execute ":vsp"
+  execute ":vertical resize 60"
+  execute ":Note"
+:endfunction
+
 " ---------------Coc.nvim configuration -----------------"
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -158,7 +226,7 @@ set nowritebackup
 " Better display for messages
 set cmdheight=1
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=1000
+set updatetime=800
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 " always show signcolumns
@@ -190,7 +258,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -252,3 +320,22 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+inoremap <silent><expr> <c-space> coc#refresh()
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" --------- Custom binding -----------
+map <space>q :noh <CR>
+map qq :q <CR>
+map fs :w <CR>
+nnoremap <space>w <C-w>
+map <space>v :vsp <CR>
+map <space>h :sp <CR>
+
+nnoremap J 10j
+nnoremap K 10k
+
+" force yourself to stop using the arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>

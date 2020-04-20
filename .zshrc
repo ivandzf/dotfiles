@@ -112,6 +112,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 export GOPATH=/Users/ivan/go
 export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
@@ -119,7 +122,7 @@ export RG=$GOPATH/src/gitlab.com/ruangguru/source
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
 export PATH=$GOBIN:$GOROOT/bin:$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
 export PUBSUB_EMULATOR_HOST=localhost:8085
-export PUBSUB_PROJECT_ID=silicon-airlock-153323
+export PUBSUB_PROJECT_ID=dummy-project
 
 alias ls="colorls"
 alias grm="go run main.go"
