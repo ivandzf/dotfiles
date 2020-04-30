@@ -26,6 +26,8 @@ Plug 'preservim/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
 
 " view & search
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 " Plug 'liuchengxu/vista.vim'
 Plug 'majutsushi/tagbar'
 
@@ -63,13 +65,24 @@ Plug 'diepm/vim-rest-console'
 Plug 'https://github.com/xolox/vim-notes'
 Plug 'https://github.com/xolox/vim-misc'
 
+" startup
+Plug 'mhinz/vim-startify'
+
 " ------------ LANGUAGE SUPPORT ---------------
 " Rust
 Plug 'rust-lang/rust.vim'
 " Go
 Plug 'fatih/vim-go', { 'tag': '*' }
 " Python
-" Plug 'https://github.com/neoclide/coc-python'
+Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
+
+" Json
+Plug 'https://github.com/elzr/vim-json'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
 
 " ----------- theme ------------
 Plug 'https://github.com/dracula/vim'
@@ -80,6 +93,7 @@ Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'https://github.com/mhinz/vim-janah'
 call plug#end()
 
 set encoding=UTF-8
@@ -157,6 +171,12 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_highlighting_cache = 1
 let g:airline#extensions#whitespace#enabled = 0
 
+" ------------- ctrlp_funky -------------
+let g:ctrlp_funky_syntax_highlight = 1
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
 " ------------ nerdtree setting -------------
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -190,9 +210,8 @@ let g:go_highlight_function_parameters = 1
 let g:go_doc_keywordprg_enabled = 0
 
 " --------- Python setting -------------
-let python_highlight_all=1
 let g:pymode_rope = 0
-"set completeopt-=preview
+let g:deoplete#sources#jedi#show_docstring=1
 
 " ------------- Buffer key binding ---------------
 nnoremap <silent> <space>bn :bnext<CR>
@@ -216,6 +235,14 @@ nnoremap <silent> <space>N :call ViewNote()<CR>
   execute ":vertical resize 60"
   execute ":Note"
 :endfunction
+
+" -------------- Jedi configuration -------------"
+let g:jedi#documentation_command = ""
+let g:jedi#goto_command = "gd"
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#show_call_signatures = 2
+let g:jedi#popup_on_dot = 0
+set completeopt=menuone,longest
 
 " ---------------Coc.nvim configuration -----------------"
 " if hidden is not set, TextEdit might fail.
@@ -343,3 +370,24 @@ map <right> <nop>
 " ----------- Custom function ------------
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 
+" --------- startify config -----------
+let s:header = [
+      \ '',
+      \ '                       __         _    _        _    _      _         _      ',
+      \ '                      / /    ___ | |_ ( ) ___  | |_ | |__  (_) _ __  | | __  ',
+      \ '                     / /    / _ \| __||/ / __| | __|| |_ \ | || |_ \ | |/ /  ',
+      \ '                    / /___ |  __/| |_    \__ \ | |_ | | | || || | | ||   <   ',
+      \ '                    \____/  \___| \__|   |___/  \__||_| |_||_||_| |_||_|\_\  ',
+      \ '                                       [ Do your best ]                      ',
+      \ '                                                                             ',
+      \ '',
+      \ ]
+
+function! s:center(lines) abort
+  let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+  let centered_lines = map(copy(a:lines),
+        \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+  return centered_lines
+endfunction
+
+let g:startify_custom_header = s:center(s:header)
