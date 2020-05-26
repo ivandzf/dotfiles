@@ -26,8 +26,8 @@ Plug 'preservim/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
 
 " view & search
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'liuchengxu/vista.vim'
 Plug 'majutsushi/tagbar'
 
@@ -170,12 +170,6 @@ let g:airline_theme='palenight'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_highlighting_cache = 1
 let g:airline#extensions#whitespace#enabled = 0
-
-" ------------- ctrlp_funky -------------
-let g:ctrlp_funky_syntax_highlight = 1
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " ------------ nerdtree setting -------------
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -358,14 +352,24 @@ nnoremap <space>w <C-w>
 map <space>v :vsp <CR>
 map <space>h :sp <CR>
 
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>h :History<CR>
+nmap <Leader>F :Files<CR>
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>l :BLines<CR>
+nmap <Leader>L :Lines<CR>
+nmap <Leader>' :Marks<CR>
+nmap <Leader>/ :Ag<Space>
+nmap <Leader>/ :Rg<Space>
+
 nnoremap J 10j
 nnoremap K 10k
 
 " force yourself to stop using the arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " ----------- Custom function ------------
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
