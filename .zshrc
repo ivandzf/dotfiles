@@ -118,6 +118,9 @@ export LC_ALL=en_US.UTF-8
 export GOPATH=/Users/ivan/go
 export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOBIN
 export RG=$GOPATH/src/gitlab.com/ruangguru/source
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
 export PATH=$GOBIN:$GOROOT/bin:$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
@@ -128,12 +131,24 @@ alias ls="colorls"
 alias grm="go run main.go"
 alias python="python3"
 alias rg=$RG
+alias rgc=$GOPATH/src/gitlab.com/ruangguru/rg-contract
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias kcrg='kubectl --context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s'
+alias kcgl='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
+alias kcid='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1'
+alias kcth='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1'
+alias kcvn='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1'
+alias kcucrg='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s --namespace=production'
+alias kcucgl='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
+alias kcucid='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1 --namespace=production'
+alias kcucth='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1 --namespace=th-production'
+alias kcucvn='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1 --namespace=vn-production'
 
 # POWERLEVEL9K_MODE='nerdfont-complete'
 # source  ~/powerlevel9k/powerlevel9k.zsh-theme

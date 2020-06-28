@@ -25,6 +25,8 @@ Plug 'preservim/nerdtree'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'scrooloose/nerdcommenter'
 
+Plug 'rhysd/vim-clang-format'
+
 " view & search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
