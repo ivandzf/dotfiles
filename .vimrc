@@ -10,15 +10,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
 " let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" vim-tsx will do all the coloring for jsx in the .tsx file
-Plug 'ianks/vim-tsx'
-
-"------------------------ VIM TSX ------------------------
-" by default, if you open tsx file, neovim does not show syntax colors
-" typescript-vim will do all the coloring for typescript keywords
-Plug 'leafgarland/typescript-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
 
 " directory
 Plug 'preservim/nerdtree'
@@ -75,6 +68,7 @@ Plug 'mhinz/vim-startify'
 Plug 'rust-lang/rust.vim'
 " Go
 Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'sebdah/vim-delve'
 " Python
 Plug 'davidhalter/jedi-vim'
 Plug 'deoplete-plugins/deoplete-jedi'
@@ -109,10 +103,6 @@ set incsearch
 set hlsearch
 set mouse=a
 
-set wrap
-set linebreak
-set showbreak=....
-
 filetype plugin indent on
 set autoindent
 set expandtab
@@ -121,6 +111,10 @@ set shiftwidth=2
 set backspace=2
 set cindent
 set smarttab
+
+set wrap
+set linebreak
+set showbreak=....
 
 set hlsearch
 set incsearch
@@ -189,9 +183,8 @@ let g:rustfmt_autosave = 1
 
 " --------- Go setting ------------
 let g:go_fmt_command = "goimports"
-
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+let g:go_fmt_fail_silently = 1
+let g:go_addtags_transform = "camelcase"
 
 let g:go_def_mapping_enabled = 1 
 
@@ -204,10 +197,17 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_function_parameters = 1
 let g:go_doc_keywordprg_enabled = 0
+let g:go_debug_windows = {
+      \ 'vars':       'rightbelow 60vnew',
+      \ 'stack':      'rightbelow 10new',
+\ }
 
 " --------- Python setting -------------
 let g:pymode_rope = 0
 let g:deoplete#sources#jedi#show_docstring=1
+
+" ------------ ALE setting ----------------
+let b:ale_linters = {'javascript': ['eslint']}
 
 " ------------- Buffer key binding ---------------
 nnoremap <silent> <space>bn :bnext<CR>

@@ -1,53 +1,56 @@
 {
-  "yank.enableCompletion": false,
-  "yank.highlight.enable": false,
-  "python.linting.pylintEnabled": true,
-  "python.linting.flake8Enabled": false,
-  "python.linting.enabled": true,
-  "python.pythonPath": "/usr/bin/python3",
-  "suggest.noselect": false,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "javascriptreact",
-    "typescript.tsx",
-    "python"
-  ],
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": [
-        "go.mod",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ],
-      "filetypes": [
-        "go"
-      ]
-    },
-    "rust": {
-      "command": "ra_lsp_server",
-      "filetypes": [
-        "rust"
-      ],
-      "rootPatterns": [
-        "Cargo.toml"
-      ]
-    },
-    "bash": {
-      "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh"
-      ],
-      "ignoredRootPaths": [
-        "~"
-      ]
-    }
-  }
+	"yank.enableCompletion": false,
+	"yank.highlight.enable": false,
+	"python.pythonPath": "/usr/local/bin/python3",
+	"python.jediEnabled": true,
+	"python.jediPath": "/usr/local/lib/python3.8/site-package",
+	"python.linting.enabled": true,
+	"python.linting.flake8Enabled": true,
+	"python.linting.pylintEnabled": false,
+	"python.formatting.provider": "autopep8",
+	"suggest.noselect": false,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"javascript",
+		"typescript",
+		"typescriptreact",
+		"json",
+		"javascriptreact",
+		"typescript.tsx",
+		"python"
+	],
+	"languageserver": {
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": [
+				"go.mod",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+			"filetypes": [
+				"go"
+			]
+		},
+		"rust": {
+			"command": "ra_lsp_server",
+			"filetypes": [
+				"rust"
+			],
+			"rootPatterns": [
+				"Cargo.toml"
+			]
+		},
+		"bash": {
+			"command": "bash-language-server",
+			"args": [
+				"start"
+			],
+			"filetypes": [
+				"sh"
+			],
+			"ignoredRootPaths": [
+				"~"
+			]
+		}
+	}
 }

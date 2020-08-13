@@ -82,6 +82,7 @@ plugins=(
   osx
   python
   kubectl
+  zsh-kubectl-prompt
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,21 +116,25 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# go
 export GOPATH=/Users/ivan/go
 export GOROOT=/usr/local/opt/go/libexec
 export GOBIN=$GOPATH/bin
 export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOBIN
+
 export RG=$GOPATH/src/gitlab.com/ruangguru/source
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
 export PATH=$GOBIN:$GOROOT/bin:$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
+
 export PUBSUB_EMULATOR_HOST=localhost:8085
 export PUBSUB_PROJECT_ID=dummy-project
 
 alias ls="colorls"
 alias grm="go run main.go"
 alias python="python3"
+alias pip="pip3"
 alias rg=$RG
 alias rgc=$GOPATH/src/gitlab.com/ruangguru/rg-contract
 
@@ -196,3 +201,9 @@ source <(stern --completion=zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+export YVM_DIR=/usr/local/opt/yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+
+#export PATH="/usr/local/opt/python@3.7/bin:$PATH"
