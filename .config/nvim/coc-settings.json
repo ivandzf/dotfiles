@@ -1,0 +1,77 @@
+{
+  "yank.enableCompletion": false,
+  "yank.highlight.enable": false,
+  "suggest.noselect": false,
+  "yaml.format.enable": true,
+  "suggest.completionItemKindLabels": {
+    "method": "  ",
+    "function": "  ",
+    "variable": "[]",
+    "field": "  ",
+    "typeParameter": "<>",
+    "constant": "  ",
+    "class": " פּ ",
+    "interface": " 蘒",
+    "struct": "  ",
+    "event": "  ",
+    "operator": "  ",
+    "module": "  ",
+    "property": "  ",
+    "enum": " 練",
+    "reference": "  ",
+    "keyword": "  ",
+    "file": "  ",
+    "folder": " ﱮ ",
+    "color": "  ",
+    "unit": " 塞 ",
+    "snippet": "  ",
+    "text": "  ",
+    "constructor": "  ",
+    "value": "  ",
+    "enumMember": "  "
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "python",
+    "go",
+    "ocaml",
+    "reason",
+    "rust",
+    "css",
+    "markdown"
+  ],
+  "python.linting.pylintEnabled": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextPrefix": "➤ ",
+  "diagnostic.enableMessage": "jump",
+  "codeLens.enable": true,
+  "rust-analyzer.lens.methodReferences": true,
+  "rust-analyzer.hoverActions.enable": false,
+  "rust-analyzer.hoverActions.linksInHover": false,
+  "rust-analyzer.inlayHints.chainingHints": true,
+  "rust-analyzer.diagnostics.enableExperimental": false,
+  "javascript.suggestionActions.enabled": false,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    },
+    "sql": {
+      "command": "sql-language-server",
+      "args": ["up", "--method", "stdio"],
+      "filetypes": ["sql", "mysql"]
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
+    }
+  }
+}

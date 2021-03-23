@@ -1,3 +1,5 @@
+#zmodload zsh/zprof # top of your .zshrc file
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -12,6 +14,8 @@ export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/ivan/.oh-my-zsh"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+
+DISABLE_AUTO_UPDATE=true
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,20 +76,19 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  mvn
-  npm
-  brew
   docker
-  github
-  ng
-  node
-  osx
-  python
   kubectl
-  zsh-kubectl-prompt
 )
 
 source $ZSH/oh-my-zsh.sh
+
+function kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        source <(command kubectl completion zsh)
+    fi
+
+    command kubectl "$@"
+}
 
 # User configuration
 
@@ -117,32 +120,28 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # go
+export GOROOT="$(brew --prefix golang)/libexec"
 export GOPATH=/Users/ivan/go
-export GOROOT=/usr/local/opt/go/libexec
-export GOBIN=$GOPATH/bin
-export PATH=$GOPATH/bin:$PATH
-export PATH=$PATH:$GOPATH
-export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
-export RG=$GOPATH/src/gitlab.com/ruangguru/source
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
-export PATH=$GOBIN:$GOROOT/bin:$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
+export PATH=$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
 
-export PUBSUB_EMULATOR_HOST=localhost:8085
-export PUBSUB_PROJECT_ID=dummy-project
+#export PUBSUB_EMULATOR_HOST=localhost:8413
+#export PUBSUB_PROJECT_ID=silicon-airlock-153323
 
 alias ls="colorls"
 alias grm="go run main.go"
 alias python="python3"
 alias pip="pip3"
-alias rg=$RG
+alias rg=$GOPATH/src/gitlab.com/ruangguru/source
 alias rgc=$GOPATH/src/gitlab.com/ruangguru/rg-contract
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/completion.zsh.inc'; fi
+alias rgd=~/Documents/Ruangguru
+alias me=$GOPATH/src/github.com/ivandzf
+alias vi=nvim
+alias v=nvim
+alias vim=nvim
+alias gpp="git push origin -o merge_request.create -o merge_request.label=\"vch: payment-engineer\" -o merge_request.label=\"vcc: payment-be\" -o merge_request.label=\"volta\""
 
 alias kcrg='kubectl --context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s'
 alias kcgl='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
@@ -186,24 +185,37 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export LC_ALL=en_US.UTF-8
 
 # RUST Config
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 alias cr="cargo run"
-
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # Android SDK
 export ANDROID_HOME="/Users/ivan/Documents/AndroidSDK"
 
 alias tx="tmux new-session \; split-window -v -p 25\;"
 
-source <(stern --completion=zsh)
+#source <(stern --completion=zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 export YVM_DIR=/usr/local/opt/yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 #export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/completion.zsh.inc'; fi
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/ivan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# opam configuration
+test -r /Users/ivan/.opam/opam-init/init.zsh && . /Users/ivan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+#zprof # bottom of .zshrc
+export PATH="/usr/local/opt/ruby/bin:$PATH"
