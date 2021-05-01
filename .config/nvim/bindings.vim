@@ -2,7 +2,7 @@
 nnoremap <silent> <Leader>bd :bd<CR>
 " --------- Custom binding -----------
 map <Leader>n :noh<CR>
-map qq :q!<CR>
+map qq :q<CR>
 map fs :w<CR>
 
 map <Leader>y "+y

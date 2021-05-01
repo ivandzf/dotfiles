@@ -6,9 +6,14 @@ let g:edge_style = 'aura'
 let g:sonokai_style = 'andromeda'
 let g:sonokai_enable_italic = 0
 
-syntax on
-set background=dark
-colorscheme sonokai
 "let g:oceanic_next_terminal_bold = 1
 "let g:oceanic_next_terminal_italic = 1
 
+let g:afterglow_inherit_background=1
+let g:afterglow_italic_comments=1
+
+syntax on
+set background=dark
+"colorscheme sonokai
+"colorscheme afterglow
+colorscheme sonokai

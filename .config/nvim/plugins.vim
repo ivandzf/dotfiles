@@ -45,9 +45,6 @@ Plug 'https://github.com/xolox/vim-misc'
 " startup
 Plug 'mhinz/vim-startify'
 
-" CSS
-Plug 'https://github.com/ap/vim-css-color'
-
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['markdown', 'html'] }
@@ -55,8 +52,6 @@ Plug 'prettier/vim-prettier', {
 Plug 'https://github.com/tyru/open-browser.vim'
 
 Plug 'puremourning/vimspector'
-let g:vimspector_install_gadgets = ['vscode-go', 'CodeLLDB']
-let g:vimspector_enable_mappings = 'HUMAN'
 
 " ------------ LANGUAGE SUPPORT ---------------
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -67,6 +62,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'kosayoda/nvim-lightbulb'
 "Plug 'hrsh7th/vim-vsnip'
 "Plug 'hrsh7th/vim-vsnip-integ'
+
+" CSS
+Plug 'https://github.com/ap/vim-css-color'
 
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -123,6 +121,9 @@ Plug 'mattn/emmet-vim'
 "Plug 'https://github.com/rakr/vim-one'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'w0ng/vim-hybrid'
 "Plug 'sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'morhetz/gruvbox'
 "Plug 'ayu-theme/ayu-vim'

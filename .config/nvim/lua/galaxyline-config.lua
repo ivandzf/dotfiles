@@ -3,7 +3,7 @@ local condition = require('galaxyline.condition')
 local diagnostic = require('galaxyline.provider_diagnostic')
 
 local gls = gl.section
-gl.short_line_list = {'nerdtree', 'vista', 'dbui', 'packer', 'undotree', 'startify', 'NvimTree'}
+gl.short_line_list = {'nerdtree', 'vista', 'dbui', 'packer', 'undotree', 'startify', 'NvimTree', 'VimspectorPrompt'}
 
 local colors = {
   bg = '#282a36',

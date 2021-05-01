@@ -20,6 +20,7 @@ source $HOME/.config/nvim/plug-config/bufferline.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/bindings.vim
 
+source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
 
