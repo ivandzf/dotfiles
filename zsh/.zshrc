@@ -219,3 +219,6 @@ test -r /Users/ivan/.opam/opam-init/init.zsh && . /Users/ivan/.opam/opam-init/in
 
 #zprof # bottom of .zshrc
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+

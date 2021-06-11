@@ -51,7 +51,7 @@ Plug 'prettier/vim-prettier', {
 
 Plug 'https://github.com/tyru/open-browser.vim'
 
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 
 " ------------ LANGUAGE SUPPORT ---------------
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

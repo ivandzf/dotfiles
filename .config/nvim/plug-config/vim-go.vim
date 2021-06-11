@@ -4,6 +4,7 @@ let g:go_def_mapping_enabled =  0
 let g:go_fmt_fail_silently = 1
 "let g:go_fmt_experimental = 1
 let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 0
 
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -24,4 +25,11 @@ let g:go_debug_windows = {
 nnoremap <silent> <Leader>fs :GoFillStruct<CR>
 nnoremap <silent> <Leader>er :GoIfErr<CR>
 
-
+"let g:go_debug_mappings = {
+"    \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+"    \ '(go-debug-stop)': {'key': 'q'},
+"    \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+"   \ '(go-debug-breakpoint)': {'key': '<b>'},
+"    \ '(go-debug-step)': {'key': 's'},
+"  \}
+"

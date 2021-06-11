@@ -24,10 +24,10 @@ source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/vim-go.vim
 
-luafile $HOME/.config/nvim/lua/treesitter-config.lua
-luafile $HOME/.config/nvim/lua/galaxyline-config.lua
-luafile $HOME/.config/nvim/lua/bufferline-config.lua
-luafile $HOME/.config/nvim/lua/nvim-tree-config.lua
+luafile $HOME/.config/nvim/lua/config/treesitter.lua
+luafile $HOME/.config/nvim/lua/config/galaxyline.lua
+luafile $HOME/.config/nvim/lua/config/bufferline.lua
+luafile $HOME/.config/nvim/lua/config/nvim-tree.lua
 "luafile $HOME/.config/nvim/lua/compe-config.lua
 "luafile $HOME/.config/nvim/lua/lspkind-config.lua
 "
@@ -41,3 +41,5 @@ luafile $HOME/.config/nvim/lua/nvim-tree-config.lua
 "luafile $HOME/.config/nvim/lsp/vim-lsp.lua
 "luafile $HOME/.config/nvim/lsp/html-lsp.lua
 "luafile $HOME/.config/nvim/lsp/virtual-text.lua
+"
+luafile $HOME/.config/nvim/plugin/go-debug.lua
