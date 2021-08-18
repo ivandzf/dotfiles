@@ -1,11 +1,14 @@
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
+
+
 vim.g.nvim_tree_bindings = {
   -- default mappings
   ["<CR>"]           = tree_cb("edit"),
   ["o"]              = tree_cb("edit"),
   ["<C-]>"]          = tree_cb("cd"),
-  ["s"]          = tree_cb("vsplit"),
-  ["h"]          = tree_cb("split"),
+  ["s"]              = tree_cb("vsplit"),
+  ["h"]              = tree_cb("split"),
   ["<C-t>"]          = tree_cb("tabnew"),
   ["<BS>"]           = tree_cb("close_node"),
   ["<S-CR>"]         = tree_cb("close_node"),

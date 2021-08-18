@@ -4,7 +4,7 @@
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1"
-let $FZF_DEFAULT_COMMAND="rg --files --ignore-case --hidden -g '!{.git,node_modules,vendor}/*'"
+let $FZF_DEFAULT_COMMAND="rg --files --ignore-case --hidden -g '!{.git,node_modules,vendor,go.sum}/*'"
 "-g '!{node_modules,.git}'
 
 " Customize fzf colors to match your color scheme

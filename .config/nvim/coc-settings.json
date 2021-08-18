@@ -78,10 +78,6 @@
       "command": "sql-language-server",
       "args": ["up", "--method", "stdio"],
       "filetypes": ["sql", "mysql"]
-    },
-    "lua": {
-      "command": "lua-lsp",
-      "filetypes": ["lua"]
     }
   }
 }

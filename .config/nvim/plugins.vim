@@ -116,6 +116,9 @@ Plug 'https://github.com/weirongxu/plantuml-previewer.vim'
 " html
 Plug 'mattn/emmet-vim'
 
+" indent
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 " ----------- theme ------------
 "Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'https://github.com/rakr/vim-one'
@@ -124,6 +127,7 @@ Plug 'sainnhe/sonokai'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'w0ng/vim-hybrid'
+Plug 'projekt0n/github-nvim-theme'
 "Plug 'sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'morhetz/gruvbox'
 "Plug 'ayu-theme/ayu-vim'

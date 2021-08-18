@@ -13,7 +13,7 @@ export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/ivan/.oh-my-zsh"
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
 
 DISABLE_AUTO_UPDATE=true
 
@@ -78,6 +78,8 @@ plugins=(
   git
   docker
   kubectl
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,13 +121,20 @@ function kubectl() {
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export PATH=/usr/local/bin:$PATH
+
 # go
 export GOROOT="$(brew --prefix golang)/libexec"
 export GOPATH=/Users/ivan/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
 export PATH=$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
+
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/ivan/Documents/rg-es-integration-pubsub-sa-key.json"
+export ROGU_KEY_PATH="$HOME/.config/gcloud/application_default_credentials.json"
+
+#export GOKU_ENDPOINT="http://goku-id-prod-cluster.rg.internal"
 
 #export PUBSUB_EMULATOR_HOST=localhost:8413
 #export PUBSUB_PROJECT_ID=silicon-airlock-153323
@@ -154,34 +163,15 @@ alias kcucid='kubectl config use-context gke_silicon-airlock-153323_asia-southea
 alias kcucth='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1 --namespace=th-production'
 alias kcucvn='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1 --namespace=vn-production'
 
-# POWERLEVEL9K_MODE='nerdfont-complete'
-# source  ~/powerlevel9k/powerlevel9k.zsh-theme
-
-# POWERLEVEL9K_CUSTOM_LOGO="echo -n '\uf179'"
-# POWERLEVEL9K_CUSTOM_LOGO_FOREGROUND="white"
-# POWERLEVEL9K_CUSTOM_LOGO_BACKGROUND="black"
-
-# POWERLEVEL9K_TIME_BACKGROUND=black
-# POWERLEVEL9K_TIME_FOREGROUND=white
-# POWERLEVEL9K_TIME_FORMAT=%D{%I:%M}
-
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_logo custom_name ssh dir dir_writable newline vcs status)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
-# POWERLEVEL9K_DISABLE_RPROMPT=true
-# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-# POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{white}╭─'
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{white}╰%f '
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/ivan/.sdkman"
 [[ -s "/Users/ivan/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ivan/.sdkman/bin/sdkman-init.sh"
 export JAVA_HOME="/Users/ivan/.sdkman/candidates/java/current"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export LC_ALL=en_US.UTF-8
 
 # RUST Config
@@ -189,7 +179,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 alias cr="cargo run"
 
 # Android SDK
-export ANDROID_HOME="/Users/ivan/Documents/AndroidSDK"
+export ANDROID_HOME="/Users/ivan/Library/Android/sdk"
+export ANDROID_SDK_ROOT="/Users/ivan/Library/Android/sdk"
+export ANDROID_AVD_HOME="/Users/ivan/.android/avd"
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 alias tx="tmux new-session \; split-window -v -p 25\;"
 
@@ -198,18 +191,9 @@ alias tx="tmux new-session \; split-window -v -p 25\;"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export YVM_DIR=/usr/local/opt/yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-
 #export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/completion.zsh.inc'; fi
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/ivan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
@@ -222,3 +206,14 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
+source /Users/ivan/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export YVM_DIR=/opt/homebrew/opt/yvm
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias luamake=/Users/ivan/Documents/github/lua-language-server/3rd/luamake/luamake

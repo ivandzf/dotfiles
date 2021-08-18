@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-yaml', 'coc-go', 'coc-rust-analyzer', 'coc-rls', 'coc-db', 'coc-tslint-plugin', 'coc-pyright', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-vimlsp']
+let g:coc_global_extensions = ['coc-yaml', 'coc-go', 'coc-rust-analyzer', 'coc-rls', 'coc-db', 'coc-tslint-plugin', 'coc-pyright', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-vimlsp', 'coc-lua']
 
 " ---------------Coc.nvim configuration -----------------"
 "nmap <silent> <Esc> :call coc#util#float_hide() <CR>
