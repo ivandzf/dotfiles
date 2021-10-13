@@ -1,6 +1,8 @@
 local gl = require("galaxyline")
 local condition = require('galaxyline.condition')
 local diagnostic = require('galaxyline.provider_diagnostic')
+local vcs = require('galaxyline.provider_vcs')
+--local icons = require("nvim-nonicons")
 
 local gls = gl.section
 gl.short_line_list = {'nerdtree', 'vista', 'dbui', 'packer', 'undotree', 'startify', 'NvimTree', 'VimspectorPrompt'}
@@ -40,20 +42,21 @@ local has_diagnostic_info = function()
 end
 
 local mode_byte_map = {
-  [110] = {'NORMAL', colors.cyan},
-  [105] = {'INSERT', colors.green},
-  [99] = {'COMMAND', colors.orange},
-  [116] = {'TERMINAL', colors.green},
-  [118] = {'VISUAL', colors.magenta},
-  [22] = {'V-BLOCK', colors.magenta},
-  [86] = {'V-LINE', colors.magenta},
-  [82] = {'REPLACE', colors.red},
-  [115] = {'SELECT', colors.magenta},
-  [83] = {'S-LINE', colors.magenta},
+  [110] = {'NORMAL', 'vim-normal-mode', colors.cyan},
+  [105] = {'INSERT', 'vim-insert-mode', colors.green},
+  [99] = {'COMMAND', 'vim-command-mode', colors.orange},
+  [116] = {'TERMINAL', 'vim-terminal-mode', colors.green},
+  [118] = {'VISUAL', 'vim-visual-mode', colors.magenta},
+  [22] = {'V-BLOCK', 'vim-visual-mode', colors.magenta},
+  [86] = {'V-LINE', 'vim-visual-mode', colors.magenta},
+  [82] = {'REPLACE', 'vim-replace-mode', colors.red},
+  [115] = {'SELECT', 'vim-select-mode', colors.magenta},
+  [83] = {'S-LINE', 'vim-select-mode', colors.magenta},
 } 
 
 local function mode_label() return mode_byte_map[vim.fn.mode():byte()][1] or 'N/A' end
-local function mode_hl() return mode_byte_map[vim.fn.mode():byte()][2] or colors.bg end
+--local function mode_icon() return icons.get(mode_byte_map[vim.fn.mode():byte()][2]) or '' end
+local function mode_hl() return mode_byte_map[vim.fn.mode():byte()][3] or colors.bg end
 
 local function highlight_fg(group, fg, gui)
   local cmd = string.format('highlight %s guifg=%s', group, fg)
@@ -73,7 +76,7 @@ gls.left[2] = {
     provider = function()
       local modehl = mode_hl()
       highlight_fg('GalaxyViMode', modehl, 'bold')
-      return string.format('  %s ', mode_label())
+      return string.format(' %s ', mode_label())
     end,
     highlight = { colors.bg, colors.bg },
     separator = "  ",
@@ -91,15 +94,26 @@ gls.left[3] = {
 }
 gls.left[4] = {
   GitIcon = {
-    provider = function() return '  ' end,
-    condition = buffer_not_empty,
-    highlight = {colors.red,colors.bg},
+    condition = condition.check_git_workspace,
+    provider = function() return '  ' end,
+    highlight = {colors.red, colors.bg},
   }
 }
+--gls.left[5] = {
+--	GitBranch = {
+--		highlight = {colors.fg, colors.bg},
+--		separator = "",
+--		provider = function ()
+--			local branch = vcs.get_git_branch()
+--			if (branch == nil) then branch = '???' end
+--			return branch..' '
+--		end,
+--	}
+--}
 gls.left[5] = {
   GitBranch = {
     provider = 'GitBranch',
-    condition = buffer_not_empty,
+    condition = condition.check_git_workspace,
 	separator = " ",
     highlight = {colors.fg,colors.bg},
   }

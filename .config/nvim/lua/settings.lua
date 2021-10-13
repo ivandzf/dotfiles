@@ -4,6 +4,7 @@ vim.g.t_Co = 256 -- Support 256 colors
 vim.g.syntax_on = true -- syntax highlighting
 vim.o.showcmd = true
 vim.o.cmdheight = 2
+vim.o.completeopt = "menu,menuone,noselect"
 
 vim.o.conceallevel = 0
 
@@ -24,7 +25,7 @@ vim.o.hlsearch = true
 vim.o.incsearch = true
 
 vim.wo.number = true -- set numbered lines
-vim.wo.relativenumber = true -- set relative number
+vim.wo.relativenumber = false -- set relative number
 vim.wo.cursorline = true -- Enable highlighting of the current line
 vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 
@@ -34,3 +35,4 @@ vim.o.writebackup = false -- This is recommended by coc
 
 vim.o.updatetime = 300 -- Faster completion
 vim.o.timeoutlen = 500 -- By default timeoutlen is 1000 ms
+vim.o.hidden = true

@@ -69,9 +69,17 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["coc.nvim"] = {
+  ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/cmp-vsnip"
   },
   ["emmet-vim"] = {
     loaded = true,
@@ -89,17 +97,53 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
-  ["github-nvim-theme"] = {
+  ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/github-nvim-theme"
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  ["lua-dev.nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/lua-dev.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim"
+  },
+  neoformat = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
   ["nvim-bufferline.lua"] = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-cmp"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -109,9 +153,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
+  ["nvim-treesitter-refactor"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -125,9 +177,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/plantuml-syntax"
   },
-  sonokai = {
+  ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/sonokai"
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  rainbow_csv = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/rainbow_csv"
+  },
+  ["symbols-outline.nvim"] = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim"
   },
   undotree = {
     loaded = true,
@@ -136,10 +196,6 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
-  ["vim-gitgutter"] = {
-    loaded = true,
-    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
   ["vim-go"] = {
     loaded = true,
@@ -153,9 +209,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/vim-startify"
   },
-  ["vista.vim"] = {
+  ["vim-vsnip"] = {
     loaded = true,
-    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/vista.vim"
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+  },
+  vimspector = {
+    loaded = true,
+    path = "/Users/ivan/.local/share/nvim/site/pack/packer/start/vimspector"
   }
 }
 

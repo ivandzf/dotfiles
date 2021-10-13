@@ -1,9 +1,8 @@
---require("autocmds")
 require("mappings")
 require("settings")
 
 require("plugins")
---require("core")
-require("plugins-cfg")
+require("lsp")
+require("core")
 
 require("themes")

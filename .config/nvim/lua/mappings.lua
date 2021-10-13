@@ -3,13 +3,13 @@ vim.api.nvim_set_keymap("n", ";", "<Nop>", {noremap = true})
 vim.g.mapleader = ";"
 
 -- custom
-vim.api.nvim_set_keymap("n", "<Leader>n", ":noh<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "qq", ":q<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "fs", ":w<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>n", ":noh<CR>", {})
+vim.api.nvim_set_keymap("n", "qq", ":q<CR>", {})
+vim.api.nvim_set_keymap("n", "fs", ":w<CR>", {})
 
 -- copy paste
-vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader>p", '"+p<Paste>', {noremap = true})
+vim.api.nvim_set_keymap("v", "<Leader>y", '"*y', {})
+vim.api.nvim_set_keymap("v", "<Leader>p", '"*p<Paste>', {})
 
 -- pane
 vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", {noremap = true})
@@ -18,14 +18,14 @@ vim.api.nvim_set_keymap("n", "<C-L>", "<C-W><C-L>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<C-H>", "<C-W><C-H>", {noremap = true})
 
 -- split
-vim.api.nvim_set_keymap("n", "<Leader>v", ":vsp", {noremap = true})
-vim.api.nvim_set_keymap("n", "<Leader>vv", ":sp", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>v", ":vsp<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>vv", ":sp<CR>", {noremap = true})
 
 -- resize
-vim.api.nvim_set_keymap("n", "<C-u>", ":res +5<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-i>", ":vertical resize +10<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-o>", ":vertical resize -10<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-p>", ":res -5<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-u>", ":res +5<CR>", {})
+vim.api.nvim_set_keymap("n", "<C-i>", ":vertical resize +10<CR>", {})
+vim.api.nvim_set_keymap("n", "<C-o>", ":vertical resize -10<CR>", {})
+vim.api.nvim_set_keymap("n", "<C-p>", ":res -5<CR>", {})
 
 -- jump in
 vim.api.nvim_set_keymap("n", "J", "10j", {noremap = true})
