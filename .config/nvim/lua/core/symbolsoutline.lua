@@ -15,7 +15,7 @@ vim.g.symbols_outline = {
         hover_symbol = "<C-space>",
         toggle_preview = "K",
         rename_symbol = "r",
-        code_actions = "a",
+        code_actions = "a"
     },
     lsp_blacklist = {},
     symbol_blacklist = {},
@@ -49,4 +49,5 @@ vim.g.symbols_outline = {
     }
 }
 
-vim.api.nvim_set_keymap("n", "<Leader>z", ":SymbolsOutline<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<Leader>z", ":SymbolsOutline<CR>",
+                        {noremap = true})

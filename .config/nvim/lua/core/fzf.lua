@@ -1,12 +1,9 @@
-vim.g.fzf_layout = {
-	window = {
-		width = 0.9,
-		height = 0.9
-	}
-}
+vim.g.fzf_layout = {window = {width = 0.9, height = 0.9}}
 
-vim.api.nvim_set_var("FZF_DEFAULT_OPTS", "--ansi --preview-window 'right:60%' --layout reverse --margin=1")
-vim.api.nvim_set_var("FZF_DEFAULT_COMMAND", "rg --files --ignore-case --hidden -g '!{.git,node_modules,vendor}/*'")
+vim.api.nvim_set_var("FZF_DEFAULT_OPTS",
+                     "--ansi --preview-window 'right:60%' --layout reverse --margin=1")
+vim.api.nvim_set_var("FZF_DEFAULT_COMMAND",
+                     "rg --files --ignore-case --hidden -g '!{.git,node_modules,vendor}/*'")
 
 vim.api.nvim_set_keymap("n", "<Leader>bl", ":Buffers<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>h", ":History<CR>", {noremap = true})

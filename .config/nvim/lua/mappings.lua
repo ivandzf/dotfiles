@@ -49,3 +49,6 @@ vim.api.nvim_set_keymap("i", "∆", "<Esc>:m .+1<CR>==gi", {noremap = true})
 vim.api.nvim_set_keymap("i", "˚", "<Esc>:m .-2<CR>==gi", {noremap = true})
 vim.api.nvim_set_keymap("v", "∆", ":m '>+1<CR>gv=gv", {noremap = true})
 vim.api.nvim_set_keymap("v", "˚", ":m '<-2<CR>gv=gv", {noremap = true})
+
+-- terminal mode
+vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n><CR>", {noremap = true})

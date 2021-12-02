@@ -1,5 +1,5 @@
 vim.g.go_gopls_enabled = 0
-vim.g.go_def_mapping_enabled =  0
+vim.g.go_def_mapping_enabled = 0
 
 vim.g.go_fmt_fail_silently = 1
 vim.g.go_fmt_command = "goimports"
@@ -17,5 +17,6 @@ vim.g.go_highlight_variable_assignments = 1
 vim.g.go_highlight_function_parameters = 1
 vim.g.go_doc_keywordprg_enabled = 0
 
-vim.api.nvim_set_keymap("n", "<Leader>fs", ":GoFillStruct<CR>", {noremap = true})
+vim.api
+    .nvim_set_keymap("n", "<Leader>fs", ":GoFillStruct<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>er", ":GoIfErr<CR>", {noremap = true})

@@ -149,7 +149,7 @@ alias rgd=~/Documents/Ruangguru
 alias me=$GOPATH/src/github.com/ivandzf
 alias vi=nvim
 alias v=nvim
-alias vim=nvim
+#alias vim=nvim
 alias gpp="git push origin -o merge_request.create -o merge_request.label=\"vch: payment-engineer\" -o merge_request.label=\"vcc: payment-be\" -o merge_request.label=\"volta\""
 
 alias kcrg='kubectl --context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s'
@@ -217,3 +217,5 @@ if [ -f '/Users/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ivan/googl
 if [ -f '/Users/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ivan/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias luamake=/Users/ivan/Documents/github/lua-language-server/3rd/luamake/luamake
+#export VOLTA_HOME="$HOME/.volta"
+#export PATH="$VOLTA_HOME/bin:$PATH"
