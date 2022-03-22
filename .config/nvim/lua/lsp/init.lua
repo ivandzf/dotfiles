@@ -40,66 +40,79 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
-
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    local opts = {noremap = true, silent = true}
-
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    -- buf_set_keymap('n', 'gK', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gK', ':Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    -- buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<leader>k', ':Lspsaga signature_help<CR>', opts)
-    buf_set_keymap('n', '<leader>wa',
-                   '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<leader>wr',
-                   '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<leader>wl',
-                   '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-                   opts)
-    -- buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>D', ':Lspsaga preview_definition<CR>', opts)
-    -- buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<leader>rn', ':Lspsaga rename<CR>', opts)
-    -- buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', '<leader>ca', ':Lspsaga code_action<CR>', opts)
-    -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gr', ':Lspsaga lsp_finder<CR>', opts)
-    -- buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    buf_set_keymap('n', '<leader>e', ':Lspsaga show_line_diagnostics<CR>', opts)
-    -- buf_set_keymap('n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    -- buf_set_keymap('n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '[e', ':Lspsaga diagnostic_jump_next<CR>', opts)
-    buf_set_keymap('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>', opts)
-    buf_set_keymap('n', '<leader>q',
-                   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    buf_set_keymap('n', '<leader>f', ':Neoformat<CR>', opts)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
+
+-- Mappings
+local opts = {noremap = true, silent = true}
+vim.api.nvim_set_keymap('n', 'gK', ':Lspsaga hover_doc<CR>',
+                        {noremap = true, silent = true})
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',
+                        opts)
+vim.api
+    .nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+-- buf_set_keymap('n', 'gK', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+vim.api.nvim_set_keymap('n', 'gK', ':Lspsaga hover_doc<CR>', opts)
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+--vim.api.nvim_set_keymap('n', 'gi', ':Lspsaga implement<CR>',
+-- buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>k', ':Lspsaga signature_help<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>wa',
+                        '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>wr',
+                        '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',
+                        opts)
+vim.api.nvim_set_keymap('n', '<leader>wl',
+                        '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+                        opts)
+-- buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>D', ':Lspsaga preview_definition<CR>',
+                        opts)
+-- buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>rn', ':Lspsaga rename<CR>', opts)
+-- buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>ca', ':Lspsaga code_action<CR>', opts)
+-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+vim.api.nvim_set_keymap('n', 'gr', ':Lspsaga lsp_finder<CR>', opts)
+-- buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>e', ':Lspsaga show_line_diagnostics<CR>',
+                        opts)
+-- buf_set_keymap('n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+-- buf_set_keymap('n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[e', ':Lspsaga diagnostic_jump_next<CR>', opts)
+vim.api.nvim_set_keymap('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>q',
+                        '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>f', ':Neoformat<CR>', opts)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    'pyright', 'gopls', 'rust_analyzer', 'tsserver', 'clangd', 'dockerls',
-    'html', 'cssls', 'jsonls', 'yamlls', 'flow', 'ocamllsp'
+    'pyright', 'gopls', 'tsserver', 'clangd', 'dockerls', 'html', 'cssls',
+    'jsonls', 'yamlls', 'flow', 'ocamllsp'
 }
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}
 end
+
+-- rust_analyzer
+nvim_lsp.rust_analyzer.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            assist = {importMergeBehavior = "last", importPrefix = "by_self"},
+            cargo = {loadOutDirsFromCheck = true},
+            procMacro = {enable = true},
+            checkOnSave = {command = "clippy"},
+			lens = {methodReferences = true, references = true, enumVariantReferences = true}
+        }
+    }
+})
 
 -- Lua LSP
 local sumneko_root_path = "/Users/ivan/Documents/github/lua-language-server"
@@ -143,3 +156,7 @@ local rescript_root_path = "/Users/ivan/Documents/github/rescript-vscode"
 nvim_lsp.rescriptls.setup({
     cmd = {'node', rescript_root_path .. '/server/out/server.js', '--stdio'}
 })
+
+-- rust tools
+require('rust-tools').setup({})
+

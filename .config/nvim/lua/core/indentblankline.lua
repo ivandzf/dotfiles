@@ -1,6 +1,9 @@
-require("indent_blankline").setup {
+require("indent_blankline").setup{
     --    char = "|",
     buftype_exclude = {
-        "terminal", "help", "startify", "vista", "undotree", "VimspectorPrompt"
-    }
+        "terminal", "help", "vista", "undotree", "VimspectorPrompt", "Outline", "nerdtree", "packer", "nofile"
+    },
+	filetype_exclude = {"startify"},
+	use_treesitter = false
 }
+

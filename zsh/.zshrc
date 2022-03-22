@@ -131,7 +131,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GOOGLE_SDK_PATH=/Users/ivan/google-cloud-sdk
 export PATH=$GOOGLE_SDK_PATH/bin:$GOOGLE_SDK_PATH/path.bash.inc:$GOOGLE_SDK_PATH/completion.bash.inc:$PATH
 
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/ivan/Documents/rg-es-integration-pubsub-sa-key.json"
+#export GOOGLE_APPLICATION_CREDENTIALS="/Users/ivan/Documents/rg-es-integration-pubsub-sa-key.json"
 export ROGU_KEY_PATH="$HOME/.config/gcloud/application_default_credentials.json"
 
 #export GOKU_ENDPOINT="http://goku-id-prod-cluster.rg.internal"
@@ -150,18 +150,20 @@ alias me=$GOPATH/src/github.com/ivandzf
 alias vi=nvim
 alias v=nvim
 #alias vim=nvim
-alias gpp="git push origin -o merge_request.create -o merge_request.label=\"vch: payment-engineer\" -o merge_request.label=\"vcc: payment-be\" -o merge_request.label=\"volta\""
+alias gpp="git push origin -o merge_request.create"
 
 alias kcrg='kubectl --context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s'
 alias kcgl='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
 alias kcid='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1'
 alias kcth='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1'
 alias kcvn='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1'
+
 alias kcucrg='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s --namespace=production'
 alias kcucgl='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
 alias kcucid='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1 --namespace=production'
 alias kcucth='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1 --namespace=th-production'
 alias kcucvn='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1 --namespace=vn-production'
+alias kcucmn='kubectl config use-context minikube'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/ivan/.sdkman"

@@ -26,20 +26,27 @@ return require("packer").startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
 
     -- ColorScheme
-    -- use {"projekt0n/github-nvim-theme"}
-    -- use {"sainnhe/sonokai"}
+    use {"projekt0n/github-nvim-theme"}
+    use {"sainnhe/sonokai"}
     use "navarasu/onedark.nvim"
 	use "sainnhe/edge"
+	use "rafamadriz/neon"
     --use "monsonjeremy/onedark.nvim"
     --use "rmehri01/onenord.nvim"
     -- use {"sonph/onehalf", rtp = "vim"}
-	--use "mhartington/oceanic-next"
+	use "mhartington/oceanic-next"
+	use "yonlu/omni.vim"
+	use "fenetikm/falcon"
+	use {"lourenci/github-colors", branch = "main"}
+	use "rebelot/kanagawa.nvim"
+	use "tiagovla/tokyodark.nvim"
+	use "olimorris/onedarkpro.nvim"
 
 	-- icon
 	use "kyazdani42/nvim-web-devicons"
 
     -- Tree
-    use "kyazdani42/nvim-tree.lua"
+    use {"kyazdani42/nvim-tree.lua"}
     use "https://github.com/mbbill/undotree"
 	use "preservim/nerdtree"
 	use "Xuyuanp/nerdtree-git-plugin"
@@ -49,7 +56,6 @@ return require("packer").startup(function(use)
     -- Git
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
     use "tpope/vim-fugitive"
-    use "kdheepak/lazygit.nvim"
 
     -- Search
     use {"junegunn/fzf", dir = "~/.fzf", run = "./install --all"}
@@ -64,7 +70,8 @@ return require("packer").startup(function(use)
     use "sbdchd/neoformat"
 
     -- Airline
-    use {"glepnir/galaxyline.nvim", branch = "main"}
+    --use {"glepnir/galaxyline.nvim", branch = "main"}
+    use "NTBBloodbath/galaxyline.nvim"
 
     -- Debugger
     --  use "puremourning/vimspector"
@@ -94,6 +101,7 @@ return require("packer").startup(function(use)
     -- use "L3MON4D3/LuaSnip" -- Snippets plugin
     use "hrsh7th/cmp-vsnip"
     use "hrsh7th/vim-vsnip"
+	use "hrsh7th/vim-vsnip-integ"
 
     -- Pairs
     use "jiangmiao/auto-pairs"
@@ -109,6 +117,7 @@ return require("packer").startup(function(use)
     use {"fatih/vim-go", run = ":GoUpdateBinaries"}
     use "folke/lua-dev.nvim"
     use "mattn/emmet-vim"
+	use "simrat39/rust-tools.nvim"
 
     -- Plantuml
     use "scrooloose/vim-slumlord"
