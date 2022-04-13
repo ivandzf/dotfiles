@@ -36,3 +36,8 @@ vim.o.writebackup = false -- This is recommended by coc
 vim.o.updatetime = 300 -- Faster completion
 vim.o.timeoutlen = 500 -- By default timeoutlen is 1000 ms
 vim.o.hidden = true
+vim.o.laststatus = 3
+
+-- experimental
+--vim.o.foldmethod = "expr"
+--vim.o.foldexpr = "nvim_treesitter#foldexpr()"

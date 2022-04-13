@@ -1,10 +1,13 @@
 require'bufferline'.setup {
     options = {
-		max_name_length = 18,
-		max_prefix_length = 10, -- prefix used when a buffer is de-duplicated
-		tab_size = 18,
+        max_name_length = 18,
+        max_prefix_length = 10, -- prefix used when a buffer is de-duplicated
+        tab_size = 18,
         view = "default",
-        numbers = "none",
+        numbers = function(opts)
+            return string.format('%s%s', opts.ordinal,
+                                 opts.lower(opts.id))
+        end,
         left_trunc_marker = '',
         right_trunc_marker = '',
         diagnostics = "nvim_lsp",
@@ -25,11 +28,11 @@ require'bufferline'.setup {
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
         separator_style = "thin",
-        always_show_bufferline = false,
-        --offsets = {{filetype = "NvimTree", text = "File Explorer"}}
+        always_show_bufferline = false
+        -- offsets = {{filetype = "NvimTree", text = "File Explorer"}}
     },
-     highlights = {fill = {guibg = '#20212b'}}
-   -- highlights = {fill = {guibg = '#17181d'}}
+    highlights = {fill = {guibg = '#20212b'}}
+    -- highlights = {fill = {guibg = '#17181d'}}
 }
 
 vim.api.nvim_set_keymap("n", "<Leader>.", ":BufferLineCycleNext<CR>",

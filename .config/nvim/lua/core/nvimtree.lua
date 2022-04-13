@@ -7,7 +7,7 @@ require'nvim-tree'.setup {
     hijack_netrw = true,
     open_on_setup = false,
     ignore_ft_on_setup = {"startify", "vista", "undotree"},
-    auto_close = true,
+	--auto_close = true,
     open_on_tab = false,
     update_to_buf_dir = {
         enable = true,

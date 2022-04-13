@@ -286,9 +286,27 @@ gls.right[right] = {
 
 right = right + 1
 gls.right[right] = {
-    FileFormat = {
+    fileformat = {
         provider = function() return vim.bo.filetype end,
         highlight = {colors.fg, colors.section_bg}
+    }
+}
+
+right = right + 1
+gls.right[right] = {
+    LspClientIcon = {
+        provider = function() return ' ' end,
+        highlight = {colors.red, colors.section_bg},
+        separator = ' | ',
+        separator_highlight = {colors.bg, colors.section_bg}
+    }
+}
+
+right = right + 1
+gls.right[right] = {
+    GetLspClient = {
+        provider = {'GetLspClient'},
+        highlight = {colors.fg, colors.section_bg},
     }
 }
 
