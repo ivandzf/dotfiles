@@ -35,7 +35,7 @@ vim.cmd [[colorscheme sonokai]]
 -- vim.cmd [[silent! colorscheme onehalflight]]
 
 -- edge
---vim.g.edge_style = 'aura'
+--vim.g.edge_style = 'neon'
 --vim.g.edge_enable_italic = 1
 --vim.cmd [[silent! colorscheme edge]]
 

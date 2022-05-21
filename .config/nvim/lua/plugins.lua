@@ -19,8 +19,14 @@ return require("packer").startup(function(use)
     -- Packer can manage itself as an optional plugin
     use "wbthomason/packer.nvim"
 
+	-- cache
+	use "lewis6991/impatient.nvim"
+
     -- Dashboard
     use "mhinz/vim-startify"
+
+	-- auto filetype
+	use "nathom/filetype.nvim"
 
     -- Indent
     use "lukas-reineke/indent-blankline.nvim"
@@ -46,12 +52,12 @@ return require("packer").startup(function(use)
 	use "kyazdani42/nvim-web-devicons"
 
     -- Tree
-    use {"kyazdani42/nvim-tree.lua"}
-    use "https://github.com/mbbill/undotree"
-	use "preservim/nerdtree"
-	use "Xuyuanp/nerdtree-git-plugin"
-	use "tiagofumo/vim-nerdtree-syntax-highlight"
-	use "ryanoasis/vim-devicons"
+    use "kyazdani42/nvim-tree.lua"
+    use "mbbill/undotree"
+	--use "preservim/nerdtree"
+	--use "Xuyuanp/nerdtree-git-plugin"
+	--use "tiagofumo/vim-nerdtree-syntax-highlight"
+	--use "ryanoasis/vim-devicons"
 
     -- Git
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
@@ -64,7 +70,7 @@ return require("packer").startup(function(use)
     use "simrat39/symbols-outline.nvim"
 
     -- Buffer
-    use "akinsho/nvim-bufferline.lua"
+    use {"akinsho/nvim-bufferline.lua", tag = "v1.2.0"}
 
     -- Formatter
     use "sbdchd/neoformat"
@@ -80,11 +86,13 @@ return require("packer").startup(function(use)
     use "theHamsta/nvim-dap-virtual-text"
     use "leoluz/nvim-dap-go"
 
-	use "brymer-meneses/grammar-guard.nvim"
-
     -- LSP
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "nvim-treesitter/nvim-treesitter-refactor"
+	use "romgrk/nvim-treesitter-context"
+	use "p00f/nvim-ts-rainbow"
+	use "SmiteshP/nvim-gps"
+	use "lewis6991/spellsitter.nvim"
     --  use {"neoclide/coc.nvim", branch = "release"} use native lsp instead
     use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer"
@@ -94,11 +102,10 @@ return require("packer").startup(function(use)
     use "onsails/lspkind-nvim"
     --use "glepnir/lspsaga.nvim"
     use "tami5/lspsaga.nvim"
+	use "ray-x/lsp_signature.nvim"
     -- use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
 
     -- snippet
-    -- use "saadparwaiz1/cmp_luasnip" -- Snippets source for nvim-cmp
-    -- use "L3MON4D3/LuaSnip" -- Snippets plugin
     use "hrsh7th/cmp-vsnip"
     use "hrsh7th/vim-vsnip"
 	use "hrsh7th/vim-vsnip-integ"

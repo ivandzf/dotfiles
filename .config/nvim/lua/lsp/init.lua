@@ -1,4 +1,3 @@
-local nvim_lsp = require('lspconfig')
 require("lsp.installer")
 require("lsp.cmp")
 require("lsp.saga")
@@ -40,9 +39,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local on_attach = function(_, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
+local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
+    require('lsp_signature').on_attach({
+        hint_prefix = '🧙 ',
+        handler_opts = {
+            border = "single" -- double, rounded, single, shadow, none
+        }
+    })
 end
 
 -- Mappings
@@ -56,8 +62,9 @@ vim.api
     .nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 -- buf_set_keymap('n', 'gK', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 vim.api.nvim_set_keymap('n', 'gK', ':Lspsaga hover_doc<CR>', opts)
-vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
---vim.api.nvim_set_keymap('n', 'gi', ':Lspsaga implement<CR>',
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
+                        opts)
+-- vim.api.nvim_set_keymap('n', 'gi', ':Lspsaga implement<CR>',
 -- buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>k', ':Lspsaga signature_help<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>wa',
@@ -88,75 +95,8 @@ vim.api.nvim_set_keymap('n', '<leader>q',
                         '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>f', ':Neoformat<CR>', opts)
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = {
-    'pyright', 'gopls', 'tsserver', 'clangd', 'dockerls', 'html', 'cssls',
-    'jsonls', 'yamlls', 'flow', 'ocamllsp'
-}
-
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}
-end
-
--- rust_analyzer
-nvim_lsp.rust_analyzer.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {importMergeBehavior = "last", importPrefix = "by_self"},
-            cargo = {loadOutDirsFromCheck = true},
-            procMacro = {enable = true},
-            checkOnSave = {command = "clippy"},
-			lens = {methodReferences = true, references = true, enumVariantReferences = true}
-        }
-    }
-})
-
--- Lua LSP
-local sumneko_root_path = "/Users/ivan/Documents/github/lua-language-server"
-local sumneko_binary =
-    "/Users/ivan/Documents/github/lua-language-server/bin/macOS/lua-language-server"
-
--- lua-dev.nvim
-local luadev = require("lua-dev").setup({
-    library = {vimruntime = true, types = true, plugins = true},
-    lspconfig = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-        settings = {
-            Lua = {
-                runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                    -- Setup your lua path
-                    path = vim.split(package.path, ';')
-                },
-                diagnostics = {
-                    -- Get the language server to recognize the `vim` global
-                    globals = {'vim'}
-                },
-                workspace = {
-                    -- Make the server aware of Neovim runtime files
-                    library = {
-                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
-                    }
-                }
-            }
-        }
-    }
-})
-nvim_lsp.sumneko_lua.setup(luadev)
-
--- ReScript LSP
-local rescript_root_path = "/Users/ivan/Documents/github/rescript-vscode"
-nvim_lsp.rescriptls.setup({
-    cmd = {'node', rescript_root_path .. '/server/out/server.js', '--stdio'}
-})
-
--- rust tools
-require('rust-tools').setup({})
+for _, server in ipairs({
+    'go', 'python', 'typescript', 'docker', 'html', 'css', 'json', 'yaml',
+    'flow', 'ocaml', 'clang', 'rust', 'lua', 'ltex'
+}) do require('lsp.server.' .. server).setup(on_attach, capabilities) end
 

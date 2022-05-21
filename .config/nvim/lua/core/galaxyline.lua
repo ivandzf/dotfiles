@@ -5,6 +5,7 @@ local diagnostic = require('galaxyline.providers.diagnostic')
 local fileinfo = require('galaxyline.providers.fileinfo')
 local vcs = require('galaxyline.providers.vcs')
 -- local icons = require("nvim-nonicons")
+local gps = require('nvim-gps')
 
 local gls = gl.section
 gl.short_line_list = {
@@ -270,6 +271,21 @@ gls.left[left] = {
 
 local right = 1
 -- Right side
+--gls.right[right] = {
+--	GPS = {
+--		provider = function ()
+--			return gps.get_location()
+--		end,
+--		condition = function ()
+--			return gps.is_available()
+--		end,
+--        separator = ' ',
+--        separator_highlight = {colors.section_bg, colors.bg},
+--        highlight = {colors.fg, colors.section_bg},
+--	}
+--}
+
+right = right + 1
 gls.right[right] = {
     FileIcon = {
         provider = 'FileIcon',
@@ -280,7 +296,7 @@ gls.right[right] = {
             colors.section_bg
         },
         separator = ' ',
-        separator_highlight = {colors.section_bg, colors.bg}
+        separator_highlight = {colors.section_bg, colors.bg},
     }
 }
 
