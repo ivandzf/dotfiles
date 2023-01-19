@@ -157,13 +157,17 @@ alias kcgl='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-gl
 alias kcid='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1'
 alias kcth='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1'
 alias kcvn='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1'
+alias kcdt='kubectl --context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-data-1'
 
 alias kcucrg='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1-a_ruangguru-k8s --namespace=production'
 alias kcucgl='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-infra-1'
 alias kcucid='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-id-prod-1 --namespace=production'
 alias kcucth='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-th-prod-1 --namespace=th-production'
 alias kcucvn='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-vn-prod-1 --namespace=vn-production'
+alias kcucdt='kubectl config use-context gke_silicon-airlock-153323_asia-southeast1_ase1-glo-data-1'
 alias kcucmn='kubectl config use-context minikube'
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/ivan/.sdkman"

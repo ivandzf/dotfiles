@@ -1,8 +1,9 @@
-require("lsp.installer")
+require("lsp.notify")
 require("lsp.cmp")
 require("lsp.saga")
 require("lsp.autotag")
-require("lsp.copilot")
+require("lsp.tabnine")
+-- require("lsp.copilot") --> disable copilot cause no longer free :(
 
 vim.fn.sign_define("DiagnosticSignError", {
     texthl = "DiagnosticSignError",
@@ -37,7 +38,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -97,6 +98,6 @@ vim.api.nvim_set_keymap('n', '<leader>f', ':Neoformat<CR>', opts)
 
 for _, server in ipairs({
     'go', 'python', 'typescript', 'docker', 'html', 'css', 'json', 'yaml',
-    'flow', 'ocaml', 'clang', 'rust', 'lua', 'ltex'
+    'flow', 'ocaml', 'clang', 'rust', 'lua', 'ltex', 'php'
 }) do require('lsp.server.' .. server).setup(on_attach, capabilities) end
 

@@ -4,6 +4,8 @@ require("indent_blankline").setup{
         "terminal", "help", "vista", "undotree", "VimspectorPrompt", "Outline", "nerdtree", "packer", "nofile"
     },
 	filetype_exclude = {"startify"},
-	use_treesitter = false
+	use_treesitter = false,
+	show_current_context = true,
+	show_current_context_start = false
 }
 

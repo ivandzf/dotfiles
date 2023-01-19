@@ -28,10 +28,10 @@ require'bufferline'.setup {
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
         separator_style = "thin",
-        always_show_bufferline = false
-        -- offsets = {{filetype = "NvimTree", text = "File Explorer"}}
+        always_show_bufferline = false,
+        offsets = {{filetype = "NvimTree", text = "Tree"}}
     },
-    highlights = {fill = {guibg = '#20212b'}}
+    highlights = {fill = {bg = '#20212b'}}
     -- highlights = {fill = {guibg = '#17181d'}}
 }
 

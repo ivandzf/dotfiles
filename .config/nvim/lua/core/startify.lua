@@ -1,0 +1,1 @@
+-- vim.g.startify_padding_left = 20

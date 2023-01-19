@@ -22,10 +22,10 @@ vim.api.nvim_set_keymap("n", "<Leader>v", ":vsp<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Leader>vv", ":sp<CR>", {noremap = true})
 
 -- resize
-vim.api.nvim_set_keymap("n", "<C-u>", ":res +5<CR>", {})
+vim.api.nvim_set_keymap("n", "<C-w>", ":res +5<CR>", {})
 vim.api.nvim_set_keymap("n", "<C-i>", ":vertical resize +10<CR>", {})
 vim.api.nvim_set_keymap("n", "<C-o>", ":vertical resize -10<CR>", {})
-vim.api.nvim_set_keymap("n", "<C-p>", ":res -5<CR>", {})
+vim.api.nvim_set_keymap("n", "<C-e>", ":res -5<CR>", {})
 
 -- jump in
 vim.api.nvim_set_keymap("n", "J", "10j", {noremap = true})

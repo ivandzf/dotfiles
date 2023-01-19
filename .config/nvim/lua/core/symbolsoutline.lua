@@ -1,13 +1,20 @@
+require("symbols-outline").setup()
 -- init.lua
 vim.g.symbols_outline = {
-    highlight_hovered_item = false,
+    highlight_hovered_item = true,
     show_guides = false,
-    auto_preview = false,
-    position = 'left',
-    width = 20,
+    auto_preview = true,
+    position = 'right',
+	relative_width = true,
+    width = 10,
     show_numbers = false,
     show_relative_numbers = false,
     show_symbol_details = true,
+    preview_bg_highlight = 'Pmenu',
+    autofold_depth = nil,
+    auto_unfold_hover = true,
+    fold_markers = {'', ''},
+    wrap = false,
     keymaps = { -- These keymaps can be a string or a table for multiple keys
         close = {"<Esc>", "q"},
         goto_location = "<Cr>",
